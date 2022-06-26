@@ -1,0 +1,36 @@
+@use '../util' as *;
+
+html {
+	font-size: 100%;
+	font-family: var(--font-body);
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	touch-action: manipulation; 
+}
+
+body {
+	margin: 0;
+	padding: 1rem 0rem;
+	background-color: hsl(240, 3%, 7%);
+	color: hsl(0, 0%, 100%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.line {
+	border: rem(0.1) solid white;
+	width: 100%;
+	margin-bottom: rem(25);
+
+	@include breakpoint-up(medium) {
+		margin-bottom: rem(50);
+	}
+}

@@ -1,0 +1,58 @@
+@use '../util' as *;
+
+.keyboard {
+    padding-top: rem(30);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: rem(5);   
+}
+
+.row {
+    .correct {
+        background-color: hsl(120, 100%, 28%);
+        border-color: hsl(120, 100%, 28%);
+    }
+    .absent {
+        background-color: hsl(0, 0%, 18%);
+        border-color: hsl(0, 0%, 18%);
+    }
+}
+
+button {
+    cursor: pointer;
+    width: rem(35);
+    height: rem(50);
+    border: none;
+    border-radius: 15%;
+    background-color: hsl(0, 0%, 60%);
+    text-transform: uppercase;
+    color: white;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: rem(12);
+
+    &:hover {
+        background-color: hsl(0, 0%, 49%);
+        transition: all 2ms ease-in-out;
+    }
+
+    @include breakpoint-up(medium) {
+        width: rem(45);
+        height: rem(55);
+        font-size: rem(15);
+    }
+
+    @include breakpoint-up(large) {
+        width: rem(50);
+        height: rem(60);
+    }
+}
+
+#del, #enter{
+    width: rem(54.5);
+    @include breakpoint-up(large) {
+        width: rem(77.5);
+    }  
+}
