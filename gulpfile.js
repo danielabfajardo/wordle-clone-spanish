@@ -1,5 +1,5 @@
 // Initialize modules
-const { src, dest, watch, series } = require('gulp');
+const { src, dest, watch, series, gulp } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
@@ -7,6 +7,7 @@ const cssnano = require('cssnano');
 const babel = require('gulp-babel');
 const terser = require('gulp-terser');
 const browsersync = require('browser-sync').create();
+const deploy = require('gulp-gh-pages');
 
 // Sass Task
 function scssTask() {
@@ -52,6 +53,14 @@ function watchTask() {
 		series(scssTask, jsTask, browserSyncReload)
 	);
 }
+
+gulp.task('deploy', function () {
+    return gulp.src("./prod/**/*")
+      .pipe(deploy({ 
+        remoteUrl: "https://github.com/danielabfajardo/wordle-clone-spanish",
+        branch: "main"
+      }))
+  });
 
 // Default Gulp Task
 exports.default = series(scssTask, jsTask, browserSyncServe, watchTask);
