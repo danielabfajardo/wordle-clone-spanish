@@ -24,38 +24,14 @@ function jsTask() {
 		.pipe(dest('dist', { sourcemaps: '.' }));
 }
 
-// Browsersync
-function browserSyncServe(cb) {
-	browsersync.init({
-		server: {
-			open: 'external',
-			host: 'https://spanishwordleclone.netlify.app',
-			proxy: 'https://spanishwordleclone.netlify.app',
-			port: 80
-		},
-		notify: {
-			styles: {
-				top: 'auto',
-				bottom: '0',
-			},
-		},
-	});
-	cb();
-}
-function browserSyncReload(cb) {
-	browsersync.reload();
-	cb();
-}
-
 // Watch Task
 function watchTask() {
-	watch('*.html', browserSyncReload);
+	watch('*.html');
 	watch(
 		['app/scss/**/*.scss', 'app/**/*.js'],
-		series(scssTask, jsTask, browserSyncReload)
+		series(scssTask, jsTask)
 	);
 }
 
 // Default Gulp Task
-exports.default = series(scssTask, jsTask, browserSyncServe, watchTask);
-exports.build = series(scssTask, jsTask);
+exports.default = series(scssTask, jsTask, watchTask);
