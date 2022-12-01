@@ -14,7 +14,7 @@ const open = require('gulp-open'); // Opens a URL in a web browser
 // https://www.npmjs.com/package/gulp-open
 function openBrowser(done) {
     var options = {
-    uri: 'http://localhost:3000'
+    uri: 'https://spanishwordleclone.netlify.app'
     };
     return src('./')
     .pipe(open(options));
