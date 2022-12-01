@@ -28,7 +28,10 @@ function jsTask() {
 function browserSyncServe(cb) {
 	browsersync.init({
 		server: {
-			baseDir: '.',
+			open: 'external',
+			host: 'https://spanishwordleclone.netlify.app',
+			proxy: 'https://spanishwordleclone.netlify.app',
+			port: 80
 		},
 		notify: {
 			styles: {
@@ -52,7 +55,6 @@ function watchTask() {
 		series(scssTask, jsTask, browserSyncReload)
 	);
 }
-
 
 // Default Gulp Task
 exports.default = series(scssTask, jsTask, browserSyncServe, watchTask);
