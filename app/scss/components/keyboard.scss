@@ -52,6 +52,11 @@ button {
 
 #del, #enter{
     width: rem(54.5);
+
+    @include breakpoint-up(medium) {
+        width: rem(71.5);
+    }  
+
     @include breakpoint-up(large) {
         width: rem(77.5);
     }  
